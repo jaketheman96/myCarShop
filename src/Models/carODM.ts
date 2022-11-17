@@ -3,6 +3,7 @@ import {
   Schema,
   model,
   models,
+  isValidObjectId,
 } from 'mongoose';
 import Icar from '../Interfaces/ICar';
 
@@ -28,6 +29,13 @@ class CarODM {
   }
 
   public listCars = async (): Promise<Icar[]> => this.model.find();
+
+  public listCarById = async (id: string): Promise<Icar | null | string> => {
+    if (!isValidObjectId(id)) return 'INVALID_ID';
+    const result = await this.model.findOne({ _id: id });
+    if (result) return result;
+    return null;
+  };
 }
 
 export default CarODM;

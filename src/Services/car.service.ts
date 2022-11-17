@@ -9,7 +9,7 @@ class CarService {
     return new Car(car);
   }
 
-  registerCar = async (car: Icar) => {
+  registerCar = async (car: Icar): Promise<Car> => {
     const newCar = await this.carODM.create(car);
     return this.createCarDomain(newCar);
   };
@@ -17,6 +17,13 @@ class CarService {
   listCars = async (): Promise<Car[]> => {
     const list = await this.carODM.listCars();
     return list.map((l) => this.createCarDomain(l));
+  };
+
+  listCarById = async (id: string): Promise<Car | string> => {
+    const car = await this.carODM.listCarById(id);
+    if (!car) return 'NOT_FOUND';
+    if (typeof car === 'string') return 'INVALID_ID';
+    return this.createCarDomain(car);
   };
 }
 
