@@ -1,4 +1,4 @@
-import Ivehicle from "../Interfaces/vehicle.interface";
+import Ivehicle from '../Interfaces/vehicle.interface';
 
 class Vehicle {
   protected id: string | undefined;
@@ -9,12 +9,12 @@ class Vehicle {
   protected buyValue: number;
 
   constructor(vehicle: Ivehicle) {
-    this.id = vehicle.id,
-    this.model = vehicle.model,
-    this.year = vehicle.year,
-    this.color = vehicle.color,
-    this.status = vehicle.status,
-    this.buyValue = vehicle.buyValue
+    this.id = vehicle.id;
+    this.model = vehicle.model;
+    this.year = vehicle.year;
+    this.color = vehicle.color;
+    this.status = vehicle.status;
+    this.buyValue = vehicle.buyValue;
   }
 }
 
