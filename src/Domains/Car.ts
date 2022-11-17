@@ -1,9 +1,9 @@
-import Icar from '../Interfaces/car.interface';
+import Icar from '../Interfaces/ICar';
 import Vehicle from './vehicle.domain';
 
 class Car extends Vehicle {
-  protected doorsQty: number;
-  protected seatsQty: number;
+  private doorsQty: number;
+  private seatsQty: number;
 
   constructor(car: Icar) {
     super(car);

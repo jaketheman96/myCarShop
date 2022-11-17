@@ -1,7 +1,7 @@
 import Ivehicle from '../Interfaces/vehicle.interface';
 
 class Vehicle {
-  protected id: string | undefined;
+  readonly id: string | undefined;
   protected model: string;
   protected year: number;
   protected color: string;
@@ -13,7 +13,7 @@ class Vehicle {
     this.model = vehicle.model;
     this.year = vehicle.year;
     this.color = vehicle.color;
-    this.status = vehicle.status;
+    this.status = vehicle.status || false;
     this.buyValue = vehicle.buyValue;
   }
 }
