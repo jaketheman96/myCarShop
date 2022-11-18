@@ -13,7 +13,7 @@ class MotorcycleService {
     return this.createMotorcycleDomain(result);
   };
 
-  public listAllMotorcycles = async () => { 
+  public listAllMotorcycles = async (): Promise<Motorcycle[]> => { 
     const result = await this.motorcycleODM.listAllMotorcycles();
     return result.map((r) => this.createMotorcycleDomain(r));
   };

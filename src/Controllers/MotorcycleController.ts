@@ -34,7 +34,7 @@ class MotorcycleController {
     }
   };
 
-  public listAllMotorcycles = async () => {
+  public listAllMotorcycles = async (): Promise<Response | undefined> => {
     try {
       const response = await this.motorcycleService.listAllMotorcycles();
       return this.res.status(200).json(response);
