@@ -90,6 +90,14 @@ describe('Testa a camada service', () => {
     expect(deleted).to.be.deep.equal(null);
   });
 
+  it('Testa a function deleteCar em caso de notFound', async function () {
+    sinon.stub(Model, 'findByIdAndDelete').resolves(null);
+
+    const deleted = await service.deleteCar('634852326b35b59438fbea2f');
+
+    expect(deleted).to.be.deep.equal('NOT_FOUND');
+  });
+
   afterEach(function () {
     return sinon.restore();
   });
