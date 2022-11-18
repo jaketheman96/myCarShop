@@ -58,4 +58,17 @@ describe('Testa a camada service', () => {
 
     expect(result).to.be.deep.equal(carById);
   });
+
+  it('Testa o caso de erro quando o carro é inexistente', async function () {
+    sinon.stub(Model, 'findOne').resolves(null);
+
+    const service = new CarService();
+    const result = await service.listCarById('6376c10a07960ef94a103aa9');
+    
+    expect(result).to.be.deep.equal('NOT_FOUND');
+  });
+
+  afterEach(function () {
+    return sinon.restore();
+  });
 });
