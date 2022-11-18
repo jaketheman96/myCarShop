@@ -17,6 +17,12 @@ class MotorcycleService {
     const result = await this.motorcycleODM.listAllMotorcycles();
     return result.map((r) => this.createMotorcycleDomain(r));
   };
+
+  public listMotorcycleById = async (id: string): Promise<Motorcycle | string> => {
+    const result = await this.motorcycleODM.listMotorcycleById(id);
+    if (!result) return 'NOT_FOUND';
+    return this.createMotorcycleDomain(result);
+  };
 }
 
 export default MotorcycleService;

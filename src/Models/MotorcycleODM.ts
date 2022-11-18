@@ -23,6 +23,12 @@ class MotorcycleODM {
   }
 
   public listAllMotorcycles = async (): Promise<IMotorcycle[]> => this.model.find();
+
+  public listMotorcycleById = async (id: string): Promise<IMotorcycle | null> => {
+    const result = await this.model.findById(id);
+    if (result) return result;
+    return null;
+  };
 }
 
 export default MotorcycleODM;
