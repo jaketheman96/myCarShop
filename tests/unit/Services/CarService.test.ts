@@ -6,6 +6,10 @@ import Car from '../../../src/Domains/Car';
 import Icar from '../../../src/Interfaces/ICar';
 import CarService from '../../../src/Services/car.service';
 
+import carMocks from './mocks/carMocks';
+
+const { getAllCars } = carMocks;
+
 describe('Testa a camada service', () => {
   it('Verifica se o carro é registrado com sucesso', async function () {
     const carInput: Icar = {
@@ -35,5 +39,14 @@ describe('Testa a camada service', () => {
     const result = await service.registerCar(carInput);
 
     expect(result).to.be.deep.equal(carOutput);
+  });
+
+  it('Verifica se retorna todos os carros', async function () {
+    sinon.stub(Model, 'find').resolves(getAllCars);
+
+    const service = new CarService();
+    const result = await service.listCars();
+
+    expect(result).to.be.deep.equal(getAllCars);
   });
 });
