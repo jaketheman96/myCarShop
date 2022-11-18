@@ -10,6 +10,8 @@ import carMocks from './mocks/carMocks';
 
 const { getAllCars, carById, editCarInput, editedCarOutput } = carMocks;
 
+const service = new CarService();
+
 describe('Testa a camada service', () => {
   it('Verifica se o carro é registrado com sucesso', async function () {
     const carInput: Icar = {
@@ -35,7 +37,6 @@ describe('Testa a camada service', () => {
 
     sinon.stub(Model, 'create').resolves(carOutput);
 
-    const service = new CarService();
     const result = await service.registerCar(carInput);
 
     expect(result).to.be.deep.equal(carOutput);
@@ -44,7 +45,6 @@ describe('Testa a camada service', () => {
   it('Verifica se retorna todos os carros', async function () {
     sinon.stub(Model, 'find').resolves(getAllCars);
 
-    const service = new CarService();
     const result = await service.listCars();
 
     expect(result).to.be.deep.equal(getAllCars);
@@ -53,7 +53,6 @@ describe('Testa a camada service', () => {
   it('Verifica se retorna o carro encontrado pelo id', async function () {
     sinon.stub(Model, 'findOne').resolves(carById);
 
-    const service = new CarService();
     const result = await service.listCarById('6376c10a07960ef94a103aa9');
 
     expect(result).to.be.deep.equal(carById);
@@ -62,7 +61,6 @@ describe('Testa a camada service', () => {
   it('Testa o caso de erro quando o carro é inexistente', async function () {
     sinon.stub(Model, 'findOne').resolves(null);
 
-    const service = new CarService();
     const result = await service.listCarById('6376c10a07960ef94a103aa9');
 
     expect(result).to.be.deep.equal('NOT_FOUND');
@@ -71,7 +69,6 @@ describe('Testa a camada service', () => {
   it('Testa a function edit by id', async function () { 
     sinon.stub(Model, 'findByIdAndUpdate').resolves(editedCarOutput);
 
-    const service = new CarService();
     const result = await service.editCarById('634852326b35b59438fbea2f', editCarInput);
 
     expect(result).to.be.deep.equal(editedCarOutput);
