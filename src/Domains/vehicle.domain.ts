@@ -1,4 +1,4 @@
-import Ivehicle from '../Interfaces/vehicle.interface';
+import Ivehicle from '../Interfaces/IVehicle';
 
 class Vehicle {
   readonly id: string | undefined;

@@ -4,7 +4,7 @@ import { Model } from 'mongoose';
 import sinon from 'sinon';
 import Car from '../../../src/Domains/Car';
 import Icar from '../../../src/Interfaces/ICar';
-import CarService from '../../../src/Services/car.service';
+import CarService from '../../../src/Services/CarService';
 
 import carMocks from './mocks/carMocks';
 

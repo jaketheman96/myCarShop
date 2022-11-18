@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import CarController from '../Controllers/car.controller';
+import CarController from '../Controllers/CarController';
 import idValidation from '../Middlewares/idValidation';
 
 const routes = Router();
