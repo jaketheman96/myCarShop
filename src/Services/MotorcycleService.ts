@@ -30,6 +30,12 @@ class MotorcycleService {
     if (!result) return this.notFound;
     return this.createMotorcycleDomain(result);
   };
+
+  public deleteMotorcycle = async (id: string): Promise<string | null> => {
+    const result = await this.motorcycleODM.deleteMotorcycle(id);
+    if (!result) return this.notFound;
+    return null;
+  };
 }
 
 export default MotorcycleService;

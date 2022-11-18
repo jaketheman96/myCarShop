@@ -26,4 +26,12 @@ route.put(
   (req, res, next) => new MotorcycleController(req, res, next).editById(),
 );
 
+route.delete(
+  '/:id',
+  idValidation,
+  (req, res, next) => {
+    new MotorcycleController(req, res, next).deleteMotorcycle();
+  },
+);
+
 export default route;

@@ -35,6 +35,12 @@ class MotorcycleODM {
     if (result) return result;
     return null;
   };
+
+  public deleteMotorcycle = async (id: string): Promise<IMotorcycle | null> => {
+    const result = await this.model.findByIdAndDelete(id);
+    if (result) return result;
+    return null;
+  };
 }
 
 export default MotorcycleODM;
