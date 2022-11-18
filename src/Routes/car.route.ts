@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import CarController from '../Controllers/car.controller';
+import idValidation from '../Middlewares/idValidation';
 
 const routes = Router();
 
@@ -15,7 +16,10 @@ routes.get(
 
 routes.get(
   '/:id',
-  (req, res, next) => new CarController(req, res, next).listById(),
+  idValidation,
+  (req, res, next) => {
+    new CarController(req, res, next).listById();
+  },
 );
 
 export default routes;
