@@ -33,6 +33,15 @@ class MotorcycleController {
       this.next(error);
     }
   };
+
+  public listAllMotorcycles = async () => {
+    try {
+      const response = await this.motorcycleService.listAllMotorcycles();
+      return this.res.status(200).json(response);
+    } catch (error) {
+      this.next(error);
+    }
+  };
 }
 
 export default MotorcycleController;

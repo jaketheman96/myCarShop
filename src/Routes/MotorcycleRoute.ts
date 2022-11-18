@@ -8,4 +8,9 @@ route.post(
   (req, res, next) => new MotorcycleController(req, res, next).registerMotorcycle(),
 );
 
+route.get(
+  '/',
+  (req, res, next) => new MotorcycleController(req, res, next).listAllMotorcycles(),
+);
+
 export default route;

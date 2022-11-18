@@ -8,9 +8,14 @@ class MotorcycleService {
     return new Motorcycle(motorcycle);
   }
 
-  public registerMotorcycle = async (motorcycle: IMotorcycle) => {
+  public registerMotorcycle = async (motorcycle: IMotorcycle): Promise<Motorcycle> => {
     const result = await this.motorcycleODM.create(motorcycle);
     return this.createMotorcycleDomain(result);
+  };
+
+  public listAllMotorcycles = async () => { 
+    const result = await this.motorcycleODM.listAllMotorcycles();
+    return result.map((r) => this.createMotorcycleDomain(r));
   };
 }
 
