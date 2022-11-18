@@ -4,6 +4,7 @@ import MotorcycleODM from '../Models/MotorcycleODM';
 
 class MotorcycleService {
   private motorcycleODM = new MotorcycleODM();
+  private notFound = 'NOT_FOUND';
   private createMotorcycleDomain(motorcycle: IMotorcycle): Motorcycle {
     return new Motorcycle(motorcycle);
   }
@@ -20,13 +21,13 @@ class MotorcycleService {
 
   public listMotorcycleById = async (id: string): Promise<Motorcycle | string> => {
     const result = await this.motorcycleODM.listMotorcycleById(id);
-    if (!result) return 'NOT_FOUND';
+    if (!result) return this.notFound;
     return this.createMotorcycleDomain(result);
   };
 
   public editById = async (id: string, motorcycle: IMotorcycle): Promise<Motorcycle | string> => {
     const result = await this.motorcycleODM.editById(id, motorcycle);
-    if (!result) return 'NOT_FOUND';
+    if (!result) return this.notFound;
     return this.createMotorcycleDomain(result);
   };
 }

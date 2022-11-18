@@ -4,6 +4,7 @@ import CarODM from '../Models/carODM';
 
 class CarService {
   private carODM = new CarODM();
+  private notFound = 'NOT_FOUND';
 
   private createCarDomain(car: Icar): Car {
     return new Car(car);
@@ -21,13 +22,13 @@ class CarService {
 
   listCarById = async (id: string): Promise<Car | string> => {
     const car = await this.carODM.listCarById(id);
-    if (!car) return 'NOT_FOUND';
+    if (!car) return this.notFound;
     return this.createCarDomain(car);
   };
 
   editCarById = async (id: string, car: Icar): Promise<Car | string> => {
     const result = await this.carODM.editCarById(id, car);
-    if (!result) return 'NOT_FOUND';
+    if (!result) return this.notFound;
     return this.createCarDomain(result);
   };
 }
