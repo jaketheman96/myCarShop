@@ -82,6 +82,14 @@ describe('Testa a camada service', () => {
     expect(result).to.be.deep.equal('NOT_FOUND');
   });
 
+  it('Testa a function deleteCar em caso de sucesso', async function () {
+    sinon.stub(Model, 'findByIdAndDelete').resolves(editedCarOutput);
+
+    const deleted = await service.deleteCar('634852326b35b59438fbea2f');
+
+    expect(deleted).to.be.deep.equal(null);
+  });
+
   afterEach(function () {
     return sinon.restore();
   });
