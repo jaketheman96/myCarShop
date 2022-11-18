@@ -8,7 +8,7 @@ import CarService from '../../../src/Services/CarService';
 
 import carMocks from './mocks/carMocks';
 
-const { getAllCars, carById } = carMocks;
+const { getAllCars, carById, editCarInput, editedCarOutput } = carMocks;
 
 describe('Testa a camada service', () => {
   it('Verifica se o carro é registrado com sucesso', async function () {
@@ -64,8 +64,17 @@ describe('Testa a camada service', () => {
 
     const service = new CarService();
     const result = await service.listCarById('6376c10a07960ef94a103aa9');
-    
+
     expect(result).to.be.deep.equal('NOT_FOUND');
+  });
+
+  it('Testa a function edit by id', async function () { 
+    sinon.stub(Model, 'findByIdAndUpdate').resolves(editedCarOutput);
+
+    const service = new CarService();
+    const result = await service.editCarById('634852326b35b59438fbea2f', editCarInput);
+
+    expect(result).to.be.deep.equal(editedCarOutput);
   });
 
   afterEach(function () {

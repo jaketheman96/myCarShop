@@ -34,4 +34,25 @@ const carById = {
   seatsQty: 5,
 };
 
-export default { getAllCars, carById };
+const editCarInput = {
+  model: 'Marea',
+  year: 1992,
+  color: 'Red',
+  status: true,
+  buyValue: 12.000,
+  doorsQty: 2,
+  seatsQty: 5,
+};
+
+const editedCarOutput = {
+  id: '634852326b35b59438fbea2f',
+  model: 'Marea',
+  year: 1992,
+  color: 'Red',
+  status: true,
+  buyValue: 12.000,
+  doorsQty: 2,
+  seatsQty: 5,
+};
+
+export default { getAllCars, carById, editCarInput, editedCarOutput };
