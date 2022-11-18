@@ -20,4 +20,10 @@ route.get(
   (req, res, next) => new MotorcycleController(req, res, next).listMotorcycleById(),
 );
 
+route.put(
+  '/:id',
+  idValidation,
+  (req, res, next) => new MotorcycleController(req, res, next).editById(),
+);
+
 export default route;

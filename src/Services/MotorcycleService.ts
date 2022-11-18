@@ -13,13 +13,19 @@ class MotorcycleService {
     return this.createMotorcycleDomain(result);
   };
 
-  public listAllMotorcycles = async (): Promise<Motorcycle[]> => { 
+  public listAllMotorcycles = async (): Promise<Motorcycle[]> => {
     const result = await this.motorcycleODM.listAllMotorcycles();
     return result.map((r) => this.createMotorcycleDomain(r));
   };
 
   public listMotorcycleById = async (id: string): Promise<Motorcycle | string> => {
     const result = await this.motorcycleODM.listMotorcycleById(id);
+    if (!result) return 'NOT_FOUND';
+    return this.createMotorcycleDomain(result);
+  };
+
+  public editById = async (id: string, motorcycle: IMotorcycle): Promise<Motorcycle | string> => {
+    const result = await this.motorcycleODM.editById(id, motorcycle);
     if (!result) return 'NOT_FOUND';
     return this.createMotorcycleDomain(result);
   };

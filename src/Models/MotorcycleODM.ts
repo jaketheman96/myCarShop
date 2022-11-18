@@ -29,6 +29,12 @@ class MotorcycleODM {
     if (result) return result;
     return null;
   };
+
+  public editById = async (id: string, motorcycle: IMotorcycle): Promise<IMotorcycle | null> => {
+    const result = await this.model.findByIdAndUpdate(id, motorcycle, { new: true });
+    if (result) return result;
+    return null;
+  };
 }
 
 export default MotorcycleODM;
