@@ -1,5 +1,5 @@
 import Icar from '../Interfaces/ICar';
-import Vehicle from './vehicle.domain';
+import Vehicle from './Vehicle';
 
 class Car extends Vehicle {
   private doorsQty: number;
