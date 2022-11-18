@@ -66,12 +66,20 @@ describe('Testa a camada service', () => {
     expect(result).to.be.deep.equal('NOT_FOUND');
   });
 
-  it('Testa a function edit by id', async function () { 
+  it('Testa a function edit by id', async function () {
     sinon.stub(Model, 'findByIdAndUpdate').resolves(editedCarOutput);
 
     const result = await service.editCarById('634852326b35b59438fbea2f', editCarInput);
 
     expect(result).to.be.deep.equal(editedCarOutput);
+  });
+
+  it('Testa o caso de carro não encontrado na function editById', async function () {
+    sinon.stub(Model, 'findByIdAndUpdate').resolves(null);
+
+    const result = await service.editCarById('634852326b35b59438fbea2f', editCarInput);
+
+    expect(result).to.be.deep.equal('NOT_FOUND');
   });
 
   afterEach(function () {
