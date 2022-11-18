@@ -30,4 +30,12 @@ routes.put(
   },
 );
 
+routes.delete(
+  '/:id',
+  idValidation,
+  (req, res, next) => {
+    new CarController(req, res, next).deleteCar();
+  },
+);
+
 export default routes;

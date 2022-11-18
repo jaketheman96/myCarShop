@@ -40,6 +40,12 @@ class CarODM {
     if (result) return result;
     return null;
   };
+
+  public deleteCar = async (id: string): Promise<Icar | null> => {
+    const result = await this.model.findByIdAndDelete(id);
+    if (result) return result;
+    return null;
+  };
 }
 
 export default CarODM;

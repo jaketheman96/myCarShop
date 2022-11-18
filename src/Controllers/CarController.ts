@@ -7,6 +7,7 @@ class CarController {
   private res: Response;
   private next: NextFunction;
   private carService: CarService;
+  private notFoundMessage = { message: 'Car not found' };
 
   constructor(req: Request, res: Response, next: NextFunction) {
     this.req = req;
@@ -48,7 +49,7 @@ class CarController {
     try {
       const response = await this.carService.listCarById(id);
       if (response === 'NOT_FOUND') {
-        return this.res.status(404).json({ message: 'Car not found' });
+        return this.res.status(404).json(this.notFoundMessage);
       }
       return this.res.status(200).json(response);
     } catch (error) {
@@ -70,9 +71,20 @@ class CarController {
     try {
       const response = await this.carService.editCarById(id, car);
       if (response === 'NOT_FOUND') {
-        return this.res.status(404).json({ message: 'Car not found' });
+        return this.res.status(404).json(this.notFoundMessage);
       }
       return this.res.status(200).json(response);
+    } catch (error) {
+      this.next(error);
+    }
+  };
+
+  public deleteCar = async (): Promise<Response | undefined> => {
+    const { id } = this.req.params;
+    try {
+      const response = await this.carService.deleteCar(id);
+      if (response === 'NOT_FOUND') return this.res.status(404).json(this.notFoundMessage);
+      return this.res.status(204).json();
     } catch (error) {
       this.next(error);
     }

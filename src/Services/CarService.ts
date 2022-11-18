@@ -31,6 +31,12 @@ class CarService {
     if (!result) return this.notFound;
     return this.createCarDomain(result);
   };
+
+  deleteCar = async (id: string): Promise<null | string> => {
+    const result = await this.carODM.deleteCar(id);
+    if (!result) return this.notFound;
+    return null;
+  };
 }
 
 export default CarService;
