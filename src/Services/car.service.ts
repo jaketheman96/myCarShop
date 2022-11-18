@@ -22,8 +22,13 @@ class CarService {
   listCarById = async (id: string): Promise<Car | string> => {
     const car = await this.carODM.listCarById(id);
     if (!car) return 'NOT_FOUND';
-    if (typeof car === 'string') return 'INVALID_ID';
     return this.createCarDomain(car);
+  };
+
+  editCarById = async (id: string, car: Icar): Promise<Car | string> => {
+    const result = await this.carODM.editCarById(id, car);
+    if (!result) return 'NOT_FOUND';
+    return this.createCarDomain(result);
   };
 }
 

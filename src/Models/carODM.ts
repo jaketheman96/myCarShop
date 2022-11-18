@@ -29,8 +29,14 @@ class CarODM {
 
   public listCars = async (): Promise<Icar[]> => this.model.find();
 
-  public listCarById = async (id: string): Promise<Icar | null | string> => {
+  public listCarById = async (id: string): Promise<Icar | null> => {
     const result = await this.model.findOne({ _id: id });
+    if (result) return result;
+    return null;
+  };
+
+  public editCarById = async (id: string, car: Icar): Promise<Icar | null> => {
+    const result = await this.model.findByIdAndUpdate(id, car, { new: true });
     if (result) return result;
     return null;
   };

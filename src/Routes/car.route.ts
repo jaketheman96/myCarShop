@@ -22,4 +22,12 @@ routes.get(
   },
 );
 
+routes.put(
+  '/:id',
+  idValidation,
+  (req, res, next) => {
+    new CarController(req, res, next).editCarById();
+  },
+);
+
 export default routes;
