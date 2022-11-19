@@ -18,7 +18,7 @@
 
 -Fiz vários testes para realizar o BDD (Behavior Driven Development), testando apenas o comportamento da aplicação e para encontrá-lo é só abrir a pasta `tests -> unit`.
 
--Para rodar os testes utilize: 
+-Antes de tudo, lembre do `npm install` e para rodar os testes utilize: 
 
 `npm run test:mocha` ou `npm run test:coverage`
 
