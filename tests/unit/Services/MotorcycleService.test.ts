@@ -71,6 +71,14 @@ describe('Testa a camada Motorcycle Service', () => {
     expect(result).to.be.deep.equal(null);
   });
 
+  it('Testa o método delete motorcycle by id em caso de not found', async function () {
+    sinon.stub(Model, 'findByIdAndDelete').resolves(null);
+
+    const result = await service.deleteMotorcycle('6348513f34c397abcad040b29999');
+
+    expect(result).to.be.deep.equal('NOT_FOUND');
+  });
+
   afterEach(function () {
     return sinon.restore();
   });
