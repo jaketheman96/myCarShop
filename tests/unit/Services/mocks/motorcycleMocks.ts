@@ -21,6 +21,27 @@ const motorcycleOutput: IMotorcycle = {
   engineCapacity: 600,
 };
 
+const editedMotorcycleInput: IMotorcycle = {
+  model: 'lalaland',
+  year: 2005,
+  color: 'lalacor',
+  status: true,
+  buyValue: 30.000,
+  category: 'Street',
+  engineCapacity: 600,
+};
+
+const editedMotorcycleOutput: IMotorcycle = {
+  id: '6348513f34c397abcad040b2',
+  model: 'lalaland',
+  year: 2005,
+  color: 'lalacor',
+  status: true,
+  buyValue: 30.000,
+  category: 'Street',
+  engineCapacity: 600,
+};
+
 const allMotorcycles: IMotorcycle[] = [
   {
     id: '634852326b35b59438fbea2f',
@@ -44,4 +65,10 @@ const allMotorcycles: IMotorcycle[] = [
   },
 ];
 
-export default { motorcycleInput, motorcycleOutput, allMotorcycles };
+export default {
+  motorcycleInput,
+  motorcycleOutput,
+  allMotorcycles,
+  editedMotorcycleOutput,
+  editedMotorcycleInput,
+};
