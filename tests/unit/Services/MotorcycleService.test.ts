@@ -24,4 +24,24 @@ describe('Testa a camada Motorcycle Service', () => {
 
     expect(result).to.be.deep.equal(allMotorcycles);
   });
+
+  it('Testa o método list motorcycle by id', async function () {
+    sinon.stub(Model, 'findById').resolves(motorcycleOutput);
+
+    const result = await service.listMotorcycleById('6348513f34c397abcad040b2');
+
+    expect(result).to.be.deep.equal(motorcycleOutput);
+  });
+
+  it('Testa o método list motorcycle by id em caso de not found', async function () {
+    sinon.stub(Model, 'findById').resolves(null);
+
+    const result = await service.listMotorcycleById('6348513f34c397abcad040b999999');
+
+    expect(result).to.be.deep.equal('NOT_FOUND');
+  });
+
+  afterEach(function () {
+    return sinon.restore();
+  });
 });
